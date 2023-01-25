@@ -1,7 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
+  const myName = "Nadxelle";
   return (
     <div className="App">
       <header className="App-header">
@@ -15,9 +16,13 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn React hello
         </a>
       </header>
+      <section>
+        <h2 className="App-link">Hello World</h2>
+        <h3>{myName}</h3>
+      </section>
     </div>
   );
 }
