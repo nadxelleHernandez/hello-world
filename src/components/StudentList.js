@@ -10,7 +10,11 @@ const StudentList = (props) => {
   const studentComponents = props.students.map((student) => {
     return (
       <li>
-        <Student name={student.nameData} email={student.emailData}></Student>
+        <Student
+          name={student.nameData}
+          email={student.emailData}
+          isHere={student.isHere}
+        ></Student>
       </li>
     );
   });
