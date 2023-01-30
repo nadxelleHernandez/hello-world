@@ -9,7 +9,7 @@ const Student = (props) => {
 
   const nameColor = isPresent ? "green" : "red";
 
-  const togglePresence = () => {
+  const togglePresence = (event) => {
     setIsPresent(!isPresent);
   };
 
