@@ -1,25 +1,30 @@
 import React from "react";
-import { useState } from "react";
 import PropTypes from "prop-types";
 import "./Student.css";
 
 //props: name, email
 const Student = (props) => {
-  const [isPresent, setIsPresent] = useState(props.isHere);
+  const nameColor = props.isHere ? "green" : "red";
 
-  const nameColor = isPresent ? "green" : "red";
+  const onAttendanceButtonClick = () => {
+    const updatedStudent = {
+      id: props.id,
+      nameData: props.name,
+      emailData: props.email,
+      isHere: !props.isHere,
+    };
 
-  const togglePresence = (event) => {
-    setIsPresent(!isPresent);
+    // Invoke the function passed in through the prop named "onUpdate"
+    // This function is referenced by the name "updateStudentData" in App
+    props.onUpdate(updatedStudent);
   };
-
   return (
     <>
       <ul className={nameColor}>
         <li>Nickname: {props.name}</li>
         <li>Email: {props.email}</li>
       </ul>
-      <button onClick={togglePresence}>
+      <button onClick={onAttendanceButtonClick}>
         Toggle if {props.name} is present
       </button>
     </>
@@ -31,6 +36,7 @@ Student.propTypes = {
   name: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   isHere: PropTypes.bool.isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };
 
 Student.defaultProps = {

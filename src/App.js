@@ -1,8 +1,9 @@
 import StudentList from "./components/StudentList";
 import ClassInfo from "./components/ClassInfo";
+import { useState } from "react";
 
 function App() {
-  const studentData = [
+  const [studentData, setStudentData] = useState([
     {
       id: 1,
       nameData: "Ada",
@@ -21,12 +22,34 @@ function App() {
       emailData: "chrissy@dev.org",
       isHere: false,
     },
-  ];
+  ]);
+
+  const updateStudentData = (updatedStudent) => {
+    const students = studentData.map((student) => {
+      if (student.id === updatedStudent.id) {
+        return updatedStudent;
+      } else {
+        return student;
+      }
+    });
+    setStudentData(students);
+  };
+
+  const deleteAllStudents = () => {
+    setStudentData([]);
+  };
+
   return (
     <main>
       <h1>Attendance</h1>
-      <ClassInfo numStudents={studentData.length}></ClassInfo>
-      <StudentList students={studentData}></StudentList>
+      <ClassInfo
+        numStudents={studentData.length}
+        onDeleteAllStudents={deleteAllStudents}
+      ></ClassInfo>
+      <StudentList
+        students={studentData}
+        onUpdateStudent={updateStudentData}
+      ></StudentList>
     </main>
   );
 }

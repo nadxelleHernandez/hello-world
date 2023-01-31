@@ -16,6 +16,7 @@ const StudentList = (props) => {
           name={student.nameData}
           email={student.emailData}
           isHere={student.isHere}
+          onUpdate={props.onUpdateStudent}
         ></Student>
       </li>
     );
@@ -37,6 +38,7 @@ StudentList.propTypes = {
       isHere: PropTypes.bool,
     })
   ),
+  onUpdateStudent: PropTypes.func.isRequired,
 };
 
 export default StudentList;
