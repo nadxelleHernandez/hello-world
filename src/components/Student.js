@@ -27,6 +27,7 @@ const Student = (props) => {
 };
 
 Student.propTypes = {
+  id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   isHere: PropTypes.bool.isRequired,
